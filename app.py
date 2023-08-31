@@ -21,8 +21,8 @@ import torch
 from transformers import T5Tokenizer, T5Config, T5ForConditionalGeneration
 
 # Initialize T5 model & tokenizer
-T5_Model = T5ForConditionalGeneration.from_pretrained('t5-base')
-T5_Tokenizer = T5Tokenizer.from_pretrained('t5-base')
+T5_Model = T5ForConditionalGeneration.from_pretrained('t5-small')
+T5_Tokenizer = T5Tokenizer.from_pretrained('t5-small')
 
 # Initialize the session state key
 st.session_state.key = ""
@@ -63,8 +63,8 @@ if (st.session_state.key == 'Started' and input_text != None):
     summary_string = "summarize: " + input_text
 
     input_text_length = len(input_text.split())
-    max_length = input_text_length
-    min_length = 5
+    max_length = round(input_text_length * 0.5)
+    min_length = round(max_length * 0.5)
 
     # Encoding the summary string in to Ids for summarization
     inputs = T5_Tokenizer.encode(summary_string, return_tensors='pt', truncation=True)
