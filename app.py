@@ -63,16 +63,16 @@ if (st.session_state.key == 'Started' and input_text != None):
     summary_string = "summarize: " + input_text
 
     input_text_length = len(input_text.split())
-    max_length = round(input_text_length * 0.5)
-    min_length = round(max_length * 0.5)
-
+    max_length = 100
+    min_length = 80
+      
     # Encoding the summary string in to Ids for summarization
     inputs = T5_Tokenizer.encode(summary_string, return_tensors='pt', truncation=True)
     summary_ids = T5_Model.generate(inputs,
                                     num_beams = 6,
                                     no_repeat_ngram_size = 0,
-                                    min_length = min_length,
-                                    max_length = max_length,
+                                    min_new_tokens = min_length,
+                                    max_new_tokens = max_length,
                                     early_stopping=True)
 
     # Decoding the Ids from summarization to string
