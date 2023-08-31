@@ -17,6 +17,7 @@ Vijayanand Kondangi     31 Aug 2023     Created
 # Load dependent libraries & modules
 import streamlit as st
 from PIL import Image
+import torch
 from transformers import T5Tokenizer, T5Config, T5ForConditionalGeneration
 
 # Initialize T5 model & tokenizer
