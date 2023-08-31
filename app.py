@@ -36,7 +36,7 @@ with st.expander('About app'):
     st.write('''
     This app provides a concise, succinct summary of the given text. It takes 
     in the source text and the compression ratio as inputs and outputs a 
-    concise summary. 
+    concise summary. Created by Vijayanand Kondangi.
     ''')
 
 # Initialize variables
